@@ -12,6 +12,7 @@ const passport = require ('passport');
 const LocalStrategy = require ('passport-local').Strategy;
 const User = require('./../server/models/user.js');
 
+
 /*
     GET / -> get to the login page
 */
