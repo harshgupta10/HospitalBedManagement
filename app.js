@@ -106,6 +106,7 @@ var patients = require('./routes/patients');
 var settings = require('./routes/settings');
 var diseases = require('./routes/diseases');
 var rooms = require('./routes/rooms');
+var availability = require('./routes/availability')
 
 app.use('/', login);
 app.use('/', appRoute);
@@ -114,6 +115,7 @@ app.use('/', patients);
 app.use('/', settings);
 app.use('/', diseases);
 app.use('/', rooms);
+app.use('/',availability);
 
 var timestamp = new Date().getTime();
 

@@ -10,8 +10,9 @@
     </head>
     <body>
         <div class="container-fluid">
+            <div> <button class="btn btn-lg btn-primary btn-block btn-signin" id="availability" > Check Availability</button></div>
             <div class="card card-container">
-                {{!-- <img id="profile-img" class="profile-img-card" src="/images/nhs.png" /> --}}
+
                 <p id="profile-name" class="profile-name-card"></p>
                 <form method="post" action="/login" class="form-signin">
                     <span id="reauth-email" class="reauth-email"></span>
@@ -22,4 +23,11 @@
             </div><!-- /card-container -->
         </div><!-- /container -->
     </body>
+
+
+    <script type="text/javascript">
+    document.getElementById("availability").onclick = function () {
+        location.href = "http://localhost:3000/availability";
+    };
+    </script>
 </html>
