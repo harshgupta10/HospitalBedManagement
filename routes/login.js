@@ -11,13 +11,49 @@ const router = express.Router();
 const passport = require ('passport');
 const LocalStrategy = require ('passport-local').Strategy;
 const User = require('./../server/models/user.js');
-
+var {rooms, Room} = require('./../server/models/rooms.js');
 /*
     GET / -> get to the login page
 */
-router.get('/', (req, res) => {
-    res.render('login', {layout: false});
-});
+router.get("/availability", (req, res) => {
+    Room.find({}, null, { sort: { name: 1 } })
+      .then((rooms) => {
+        var roomsJSON = {};
+        // rooms is an array with all rooms
+        for (var i = 0; i < rooms.length; ++i) {
+          roomsJSON[rooms[i].name] = rooms[i].availability;
+        }
+  
+        res.setHeader("Content-Type", "application/json");
+        res.status(200).send(JSON.stringify(roomsJSON));
+      })
+      .catch((err) => {
+        console.log(err);
+        res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ noroom: false }));
+      });
+  });
+  
+  router.get("/login", (req, res) => {
+    res.status(200).render("login", { layout: false });
+  });
+
+  router.get("/detailedavailability", (req, res) => {
+    res.status(200).render("detailedAvailability", { layout: false });
+  });
+  
+  router.get("/", (req, res) => {
+    Room.find({}, null, { sort: { name: 1 } })
+      .then((rooms) => {
+        res.status(200).render("mainpage", { layout: false, rooms: rooms });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ noroom: false }));
+      });
+  });
+  
 
 /*
     POST /login -> authentificate the user

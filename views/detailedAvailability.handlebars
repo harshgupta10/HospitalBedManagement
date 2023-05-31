@@ -1,0 +1,315 @@
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .navbar {
+        background-color: #333;
+        padding: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .navbar-brand span {
+        margin-left: 5px;
+    }
+
+    .login-button {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+        background-color: #0056b3;
+    }
+
+    .container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+        border: 1px solid #000;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .table td {
+        background-color: #fff;
+    }
+
+    .table th:hover {
+        background-color: #7ae29d;
+    }
+
+    .table td:hover {
+        background-color: #7ae29d;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="icon" href="assets/images/logo.jpg" type="image/x-icon"> --}}
+    <title>Hospital Bed Management and Availability</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .navbar {
+        background-color: #333;
+        padding: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .navbar-brand span {
+        margin-left: 5px;
+    }
+
+    .login-button {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+        background-color: #0056b3;
+    }
+
+    .container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+        border: 1px solid #000;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .table td {
+        background-color: #fff;
+    }
+
+    .table tr:hover {
+        background-color: #e0e0e0;
+    }
+    #availability-button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+#availability-button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+
+<body>
+    <nav class="navbar">
+    <a class="navbar-brand" href="index.html">
+        <span>Hospital Bed Management and Availability</span>
+    </a>
+    <div>
+        <button class="login-button">Login</button>
+        <button id="availability-button">Availability</button>
+    </div>
+</nav>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. No</th>
+                    <th scope="col">No. of Beds Available</th>
+                    <th scope="col">Hospital Name</th>
+                    <th scope="col">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>4</td>
+                    <td>Asian Globus Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>8</td>
+                    <td>Trinity Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>2</td>
+                    <td>Government Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>6</td>
+                    <td>City Medical Center</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>12</td>
+                    <td>Heartland Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>3</td>
+                    <td>Hope Clinic</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>10</td>
+                    <td>Royal Care Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>7</td>
+                    <td>MediPrime Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>5</td>
+                    <td>Unity Medical Center</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>9</td>
+                    <td>Grace Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>3</td>
+                    <td>Sacred Heart Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>8</td>
+                    <td>Wellness Medical Center</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">13</th>
+                    <td>6</td>
+                    <td>Global Health Clinic</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">14</th>
+                    <td>4</td>
+                    <td>Riverside Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                <tr>
+                    <th scope="row">15</th>
+                    <td>7</td>
+                    <td>LifeCare Hospital</td>
+                    <td>Bhopal</td>
+                </tr>
+                
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript">
+     document.getElementsByClassName("login-button")[0].onclick = function () {
+        location.href = "http://localhost:3000/login";
+    };
+
+    document.getElementById("availability-button").onclick = function () {
+      location.href = "http://localhost:3000";
+    };
+
+    </script>
+</html>

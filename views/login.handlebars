@@ -1,33 +1,153 @@
+
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>LoginPage</title>
-        <link rel="stylesheet" href="/css/stylelogin.css">
-        <link rel="stylesheet" href="/css/bootstrap.css" />
-        <!-- <link rel="stylesheet" href="/css/style.css" /> -->
-        <!-- <link rel="stylesheet" href="/css/login.css"> -->
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div> <button class="btn btn-lg btn-primary btn-block btn-signin" id="availability" > Check Availability</button></div>
-            <div class="card card-container">
 
-                <p id="profile-name" class="profile-name-card"></p>
-                <form method="post" action="/login" class="form-signin">
-                    <span id="reauth-email" class="reauth-email"></span>
-                    <input type="text" id="inputEmail" class="form-control" name="username" placeholder="username" required autofocus>
-                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-                </form><!-- /form -->
-            </div><!-- /card-container -->
-        </div><!-- /container -->
-    </body>
+<head>
+  <meta charset="utf-8">
+  <title>Login Page</title>
+  {{!--
+  <link rel="stylesheet" href="/css/stylelogin.css"> --}}
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
 
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 50px;
+    }
 
-    <script type="text/javascript">
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .btn-availability {
+      background-color: #fff;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn-availability:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .btn-detailed-availability {
+      background-color: #fff;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .btn-detailed-availability:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .card-container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+    }
+
+    .profile-name-card {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .btn-signin {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-signin:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Hospital Bed Management and Availability</h1>
+    <nav>
+      <button class="btn-availability" id="availability">Check Availability</button>
+      <button class="btn-detailed-availability" id="detailedAvailability">Detailed Availability</button>
+    </nav>
+    <div class="card-container">
+      <p id="profile-name" class="profile-name-card">Login</p>
+      <form method="post" action="/login" class="form-signin">
+        <label for="username">Username</label>
+        <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required
+          autofocus>
+        <label for="password">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+      </form>
+    </div>
+
+  </div>
+  <script type="text/javascript">
     document.getElementById("availability").onclick = function () {
-        location.href = "http://localhost:3000/availability";
+      location.href = "http://localhost:3000";
     };
-    </script>
+
+    
+     document.getElementById("detailedAvailability").onclick = function () {
+      location.href = "http://localhost:3000/detailedavailability";
+    };
+  </script>
+</body>
+
 </html>

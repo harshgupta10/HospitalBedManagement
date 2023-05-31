@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('../images/hospital-img.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+
+    }
+
+    #navbar-login,
+    #navbar-availability {
+      /* Added styles for the new button */
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      /* Adjusted margin to decrease distance */
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .panel {
+      flex: 1;
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      height: 100px;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      margin-right: 10px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .value {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 34px;
+    }
+
+    .freerooms {
+      color: #007bff;
+    }
+
+    .total-rooms {
+      color: #28a745;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="navbar-brand">Hospital Bed Management and Availability</div>
+    <div> <!-- Added a container div to group the buttons -->
+      <button id="navbar-login">Login</button>
+      <button id="navbar-availability">Detailed Availability</button> <!-- Added the new button -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="icon">
+          <i class="fas fa-bed"></i>
+        </div>
+        <div class="info">
+          <div class="value" id="free-rooms-live"></div>
+          <div class="label">Free rooms <span class="freerooms"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="icon">
+          <i class="fas fa-door-open"></i>
+        </div>
+        <div class="info">
+          <div class="value" id="rooms-live"></div>
+          <div class="label">Total Rooms <span class="total-rooms"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+<script>
+  // Fetch the JSON data
+  fetch("/availability")
+    .then(response => response.json())
+    .then(data => {
+      // Calculate the number of free rooms
+      const freeRooms = Object.values(data).filter(status => !status).length - 1;
+
+      // Set the value of the 'Free rooms' span
+      const freeRoomsSpan = document.querySelector('.freerooms');
+      freeRoomsSpan.textContent = freeRooms;
+
+      // Set the value of the 'Total Rooms' span
+      const totalRoomsSpan = document.querySelector('.total-rooms');
+      totalRoomsSpan.textContent = Object.keys(data).length - 1;
+    })
+    .catch(error => console.error(error));
+</script>
+<script type="text/javascript">
+  document.getElementById("navbar-login").onclick = function () {
+    location.href = "http://localhost:3000/login";
+  };
+</script>
+
+
+<script type="text/javascript">
+  document.getElementById("navbar-availability").onclick = function () {
+    location.href = "http://localhost:3000/detailedavailability";
+  };
+</script>
+
+</html>
